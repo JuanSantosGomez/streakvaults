@@ -14,3 +14,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Button_toggled(button_pressed):
+	if button_pressed:
+		$HBoxContainer/Button.text="▲"
+		$VBoxContainer.show()
+	else:
+		$HBoxContainer/Button.text="▼"
+		$VBoxContainer.hide()
+
+
+
