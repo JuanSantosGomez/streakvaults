@@ -1,6 +1,6 @@
 extends Node
 
-
+var PRE_FOLDER = preload("res://main/Vault.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

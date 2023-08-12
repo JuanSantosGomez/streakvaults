@@ -18,11 +18,24 @@ func _ready():
 
 func _on_Button_toggled(button_pressed):
 	if button_pressed:
-		$HBoxContainer/Button.text="▲"
-		$VBoxContainer.show()
+		expand()
 	else:
-		$HBoxContainer/Button.text="▼"
-		$VBoxContainer.hide()
+		collapse()
 
 
+func expand():
+	$HBoxContainer/Button.text="▲"
+	$VBoxContainer.show()
+	
+	var folders = Globals.get_folders(identifier)
+	for i in folders:
+		var folder_instance = Globals.PRE_FOLDER.instance()
+		folder_instance.label = i.name
+		folder_instance.identifier = i.id
+		$VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.add_child(folder_instance)
 
+func collapse():
+	$HBoxContainer/Button.text="▼"
+	$VBoxContainer.hide()
+	for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
+		i.queue_free()
