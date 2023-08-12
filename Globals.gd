@@ -19,6 +19,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func change_name(id,new_name):
+	db.query('UPDATE `folders_folder` SET `name` = "'+str(new_name)+'" WHERE `id` = '+str(id)+';')
+
 func delete_folder(id):
 	db.query("DELETE FROM folders_folder WHERE id = "+str(id)+";")
 
