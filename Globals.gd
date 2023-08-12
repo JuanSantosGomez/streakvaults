@@ -47,7 +47,7 @@ func get_folders(parent_id=null):
 				ORDER BY password ASC, name ASC;
 			"""
 		)
-	print(db.query_result)
+	
 	return db.query_result
 
 func add_folder(parent_id=null):
