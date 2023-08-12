@@ -10,19 +10,22 @@ var db_name = "res://DB/db"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	db = SQLite.new()
+	db.path = db_name
+	db.open_db()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-func get_folders(id=null):
-	if !id:
+func get_folders(parent_id=null):
+	if !parent_id:
 		db.query(
 			"""SELECT * 
 				FROM folders_folder 
-				WHERE id is null
+				WHERE parent is null
 				;
 			"""
 		)
@@ -30,8 +33,9 @@ func get_folders(id=null):
 		db.query(
 			"""SELECT * 
 				FROM folders_folder 
-				WHERE id = """+str(id)+"""
+				WHERE parent = """+str(parent_id)+"""
 				;
 			"""
 		)
+	print(db.query_result)
 	return db.query_result

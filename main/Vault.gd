@@ -5,7 +5,7 @@ extends VBoxContainer
 # var a = 2
 # var b = "text"
 var label = "Vault"
-
+var identifier = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HBoxContainer/Label.text = label
