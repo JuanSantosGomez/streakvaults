@@ -72,8 +72,9 @@ func _on_Button2_pressed():
 
 
 func _on_Button4_pressed():
-	delete_directory()
-	queue_free()
+	$HBoxContainer/confirmation.show()
+	$HBoxContainer/confirmation.grab_focus()
+	
 
 func delete_directory():
 	Globals.delete_folder(identifier)
@@ -120,3 +121,18 @@ func _on_Button3_pressed():
 		$HBoxContainer/Button5.pressed = true
 		expand()
 		
+
+func close_confirmation():
+	$HBoxContainer/confirmation.hide()
+
+
+
+func _on_yes_pressed():
+	delete_directory()
+	queue_free()
+
+
+func _on_confirmation_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			close_confirmation()

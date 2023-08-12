@@ -23,7 +23,7 @@ _global_script_class_icons={
 config/name="streakVaults"
 run/main_scene="res://__Window__/Main_template.tscn"
 run/low_processor_mode=true
-config/icon="res://icon.png"
+config/icon="res://UI/sampleicon.png"
 
 [autoload]
 

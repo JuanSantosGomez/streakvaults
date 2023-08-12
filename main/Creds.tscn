@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/Creds.gd" type="Script" id=1]
 [ext_resource path="res://UI/SkiddleUI.tres" type="Theme" id=2]
 
-[node name="Vault" type="VBoxContainer"]
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 50.0
+content_margin_right = 50.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.937255, 1, 0, 1 )
+
+[node name="Vault2" type="VBoxContainer"]
 margin_right = 994.0
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
@@ -71,6 +78,41 @@ margin_right = 994.0
 margin_bottom = 45.0
 text = "-"
 
+[node name="confirmation" type="HBoxContainer" parent="HBoxContainer"]
+visible = false
+margin_left = 587.0
+margin_right = 994.0
+margin_bottom = 45.0
+focus_mode = 2
+mouse_filter = 0
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/confirmation"]
+margin_right = 50.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer/confirmation"]
+margin_left = 54.0
+margin_right = 274.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Are you sure?"
+
+[node name="yes" type="Button" parent="HBoxContainer/confirmation"]
+modulate = Color( 1, 0.0470588, 0.0470588, 1 )
+margin_left = 278.0
+margin_right = 344.0
+margin_bottom = 45.0
+text = "YES"
+
+[node name="no" type="Button" parent="HBoxContainer/confirmation"]
+margin_left = 348.0
+margin_right = 407.0
+margin_bottom = 45.0
+text = "NO"
+
 [connection signal="focus_exited" from="HBoxContainer/Label" to="." method="_on_Label_focus_exited"]
 [connection signal="text_changed" from="HBoxContainer/Label" to="." method="_on_Label_text_changed"]
 [connection signal="text_entered" from="HBoxContainer/Label" to="." method="_on_Label_text_entered"]
@@ -79,3 +121,7 @@ text = "-"
 [connection signal="text_entered" from="HBoxContainer/Label4" to="." method="_on_Labeled_text_entered"]
 [connection signal="pressed" from="HBoxContainer/Button3" to="." method="_on_Button3es_pressed"]
 [connection signal="pressed" from="HBoxContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="focus_exited" from="HBoxContainer/confirmation" to="." method="close_confirmation"]
+[connection signal="gui_input" from="HBoxContainer/confirmation" to="." method="_on_confirmation_gui_input"]
+[connection signal="pressed" from="HBoxContainer/confirmation/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="HBoxContainer/confirmation/no" to="." method="close_confirmation"]
