@@ -22,7 +22,8 @@ margin_bottom = 45.0
 [node name="Label2" type="Label" parent="HBoxContainer"]
 margin_right = 402.0
 margin_bottom = 45.0
-size_flags_horizontal = 3
+size_flags_horizontal = 11
+clip_text = true
 
 [node name="Label" type="LineEdit" parent="HBoxContainer"]
 visible = false
@@ -51,8 +52,9 @@ color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 margin_left = 506.0
 margin_right = 908.0
 margin_bottom = 45.0
-size_flags_horizontal = 3
+size_flags_horizontal = 11
 text = "*************"
+clip_text = true
 
 [node name="Label4" type="LineEdit" parent="HBoxContainer"]
 visible = false
@@ -85,12 +87,6 @@ margin_right = 994.0
 margin_bottom = 45.0
 focus_mode = 1
 mouse_filter = 0
-
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/confirmation"]
-margin_right = 50.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 50, 0 )
-color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 
 [node name="Label" type="Label" parent="HBoxContainer/confirmation"]
 margin_left = 54.0

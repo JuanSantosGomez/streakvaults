@@ -73,6 +73,7 @@ func _on_Button2_pressed():
 
 func _on_Button4_pressed():
 	$HBoxContainer/confirmation.show()
+	$HBoxContainer/Button4.hide()
 	$HBoxContainer/confirmation.grab_focus()
 	
 
@@ -124,6 +125,8 @@ func _on_Button3_pressed():
 
 func close_confirmation():
 	$HBoxContainer/confirmation.hide()
+	$HBoxContainer/Button4.show()
+	
 
 
 
