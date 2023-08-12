@@ -4,7 +4,9 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
+var db
+var db_name = "res://DB/db"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
