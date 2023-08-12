@@ -6,10 +6,14 @@ extends VBoxContainer
 # var b = "text"
 var label = "Vault"
 var identifier = 0
+var credential = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HBoxContainer/Label.text = label
 	$HBoxContainer/Label2.text = label
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,29 +35,36 @@ func expand():
 	
 	var folders = Globals.get_folders(identifier)
 	for i in folders:
-		var folder_instance = Globals.PRE_FOLDER.instance()
+		var object_type = Globals.PRE_FOLDER.instance() if not i.password else Globals.PRE_CREDENTIAL.instance()
+		var folder_instance = object_type
 		folder_instance.label = i.name
 		folder_instance.identifier = i.id
+		if i.password:
+			folder_instance.credential = true
+			folder_instance.password = i.password
 		$VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.add_child(folder_instance)
 
 func collapse():
-	
-	$HBoxContainer/Button.text="▼"
-	$VBoxContainer.hide()
-	for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
-		i.queue_free()
+	if !credential:
+		$HBoxContainer/Button.text="▼"
+		$VBoxContainer.hide()
+		for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
+			i.queue_free()
 
 
 func _on_Button2_pressed():
 	
 	Globals.add_folder(identifier)
-	if $HBoxContainer/Button5.pressed:
+	if !credential:
+		if $HBoxContainer/Button5.pressed:
+			collapse()
+			expand()
+		else:
+			$HBoxContainer/Button5.pressed = true
+		
+	else:
 		collapse()
 		expand()
-	else:
-		$HBoxContainer/Button5.pressed = true
-		
-	
 	
 	
 	
@@ -66,8 +77,9 @@ func _on_Button4_pressed():
 
 func delete_directory():
 	Globals.delete_folder(identifier)
-	for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
-		i.delete_directory()
+	if !credential:
+		for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
+			i.delete_directory()
 
 
 func _on_Button_pressed():
@@ -78,8 +90,7 @@ func editNameMode():
 	$HBoxContainer/Label.show()
 	$HBoxContainer/Label2.hide()
 	$HBoxContainer/Label.grab_focus()
-
-
+	
 func _on_Label_focus_exited():
 	nameChange()
 
@@ -98,3 +109,14 @@ func _on_Label_text_changed(new_text):
 
 func _on_Label_text_entered(new_text):
 	nameChange()
+
+
+func _on_Button3_pressed():
+	Globals.add_cred(identifier)
+	if $HBoxContainer/Button.text!="▼":
+		collapse()
+		expand()
+	else:
+		$HBoxContainer/Button5.pressed = true
+		expand()
+		
