@@ -19,6 +19,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func delete_folder(id):
+	db.query("DELETE FROM folders_folder WHERE id = "+str(id)+";")
 
 func get_folders(parent_id=null):
 	if !parent_id:
@@ -48,7 +50,7 @@ func add_folder(parent_id=null):
 				INTO folders_folder 
 				(name,parent)
 				VALUES
-				('new_cabinet','"""+str(parent_id)+"""')
+				('new_cabinet',"""+str(parent_id)+""")
 				;
 			"""
 		)

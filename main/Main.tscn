@@ -29,3 +29,21 @@ margin_right = 994.0
 margin_bottom = 483.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer2"]
+margin_right = 994.0
+margin_bottom = 20.0
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 970.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+color = Color( 0, 0, 0, 1 )
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 974.0
+margin_right = 994.0
+margin_bottom = 20.0
+text = "■+"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]

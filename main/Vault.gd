@@ -47,3 +47,13 @@ func _on_Button2_pressed():
 	expand()
 
 
+
+
+func _on_Button4_pressed():
+	delete_directory()
+	queue_free()
+
+func delete_directory():
+	Globals.delete_folder(identifier)
+	for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
+		i.delete_directory()

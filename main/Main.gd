@@ -21,3 +21,15 @@ func displayFolders():
 		folder_instance.label = i.name
 		folder_instance.identifier = i.id
 		$ScrollContainer/VBoxContainer2.add_child(folder_instance)
+func clearFolders():
+	for i in $ScrollContainer/VBoxContainer2.get_children():
+		if i.name!='HBoxContainer':
+			i.queue_free()
+
+
+
+
+func _on_Button_pressed():
+	Globals.add_folder()
+	clearFolders()
+	displayFolders()
