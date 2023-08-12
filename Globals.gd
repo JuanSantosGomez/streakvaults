@@ -16,3 +16,22 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func get_folders(id=null):
+	if !id:
+		db.query(
+			"""SELECT * 
+				FROM folders_folder 
+				WHERE id is null
+				;
+			"""
+		)
+	else:
+		db.query(
+			"""SELECT * 
+				FROM folders_folder 
+				WHERE id = """+str(id)+"""
+				;
+			"""
+		)
+	return db.query_result
