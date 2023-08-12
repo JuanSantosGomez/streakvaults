@@ -39,3 +39,16 @@ func get_folders(parent_id=null):
 		)
 	print(db.query_result)
 	return db.query_result
+
+func add_folder(parent_id=null):
+	if !parent_id:
+		parent_id = "null"
+	db.query(
+			"""INSERT 
+				INTO folders_folder 
+				(name,parent)
+				VALUES
+				('new_cabinet','"""+str(parent_id)+"""')
+				;
+			"""
+		)

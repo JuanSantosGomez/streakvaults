@@ -39,3 +39,11 @@ func collapse():
 	$VBoxContainer.hide()
 	for i in $VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer.get_children():
 		i.queue_free()
+
+
+func _on_Button2_pressed():
+	Globals.add_folder(identifier)
+	collapse()
+	expand()
+
+

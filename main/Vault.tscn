@@ -27,10 +27,22 @@ text = "Label"
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
 margin_left = 129.0
-margin_right = 994.0
+margin_right = 879.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
 color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+margin_left = 883.0
+margin_right = 936.0
+margin_bottom = 45.0
+text = "■+"
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+margin_left = 940.0
+margin_right = 994.0
+margin_bottom = 45.0
+text = "●+"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
@@ -70,3 +82,4 @@ size_flags_horizontal = 3
 color = Color( 0.184314, 0.00392157, 0.00392157, 1 )
 
 [connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_Button_toggled"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_Button2_pressed"]
